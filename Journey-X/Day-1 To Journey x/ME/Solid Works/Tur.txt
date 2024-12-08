@@ -1,0 +1,75 @@
+Lecture1)
+
+1)Sketch
+2)Top Plane
+3)Units Selection
+
+#1 LINE (L) Command
+origin selection for better frame of reference for fully defined and constrained sketches
+
+escape (esc) removes and exits command
+
+#2)Smart Dimensions and then part selection
+
+Blue space Indicates its closed and suitable for 2D stuff
+#3 Black = Defined Line
+   Blue = Not Defined
+We Have to ensure that the sketch is well defined
+
+#4)Make Relations (eg Collinearity)
+Select lines to make collinear
+select first line
+ctrl
+select second line
+list of relations will appear and then make collinear would be there and symbol of collinearity will be shown and they will become well defined
+
+over defined is an issue and can be kept driven
+
+if any change in other dimensions are made that driven one will change automatically accordingly
+
+
+Center Lines for References
+
+(Reference Center lines)
+
+
+1)To Define line 1 wrt origin (if there exists a line which is defined due to its connection with origin then select smart dimensions and select both lines (if vertical) pull the smart dimensions line vertically when the smart dimensions line is connecting both the lines and write the smart dimensions,this will tell at what distance te second line is from the first which is again defined so yk what I mean,this isfor the lesson I saw on Reference Center Lines so yk!)
+
+
+Now After Drawing a circle on the reference Lines you can make tangents by clicking the point on circle 1 and draw a line and if wanted connect it with circle 2s you will get a symbol of tangent there. and then click there and double click, we can create it away tooS
+
+We can create a line crossing reference lines of both to apply tangent there
+select circle 
+ctrl
+select line and the tangent icon will appear click on it and then the tangent will be created dude!!
+
+2)Trimming
+
+by selecting trim entities use trim to closest dude by selecting on the object dudeS
+
+F means Zoom to fit
+
+Trim Corners Removes Corner extensions
+
+We Can Keep Trimmed Lines as Construction Entities (Maybe Indirectly Creating Reference Lines though dude!!)
+
+To Create Mirror Entities
+
+make Lines
+
+for eg two slant lines
+
+create Center Lines
+
+select Mirror Entities
+
+select mirror about and then those two center lines as reference
+
+it will mirror the object around those Center Lines
+
+ Mirror Lines by also deleting the original too
+
+
+MY OWN NOTE: (I DREW A SQUARE MADE IT 3D NOW TO EXTRUDE WHAT I DID I CONNECTED DIAGONALS AND THEN SELECTED A MID POINT OF THE DIAGONAL,AS THE SQUARE WAS WELL DEFINED CUZ IT WAS CONNECTED TO ORIGIN AND HENCE THE REFERENCE LINE MADE AS DIAGONAL I SELECTED THE MID POINT OF THE DIAGONAL AND CREATED AN CIRCLE FROM THAT MIDPOINT
+You Can Create THIS LED me to define the circle too
+so to define anything connect those two things with a defined line and that defined line will serve as an reference to the same too

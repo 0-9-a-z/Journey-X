@@ -1,0 +1,605 @@
+# encoding: utf-8
+# 2024 R2
+SetScriptVersion(Version="24.2.133")
+Save(Overwrite=True)
+template1 = GetTemplate(
+    TemplateName="Fluid Flow",
+    Solver="CFX")
+system1 = GetSystem(Name="SYS")
+system2 = template1.CreateSystem(
+    Position="Below",
+    RelativeTo=system1)
+geometry1 = system2.GetContainer(ComponentName="Geometry")
+geometry1.SetFile(FilePath="C:/Users/aadit/OneDrive/Desktop/Beam.STEP")
+meshComponent1 = system2.GetComponent(Name="Mesh")
+meshComponent1.Refresh()
+mesh1 = system2.GetContainer(ComponentName="Mesh")
+mesh1.Edit()
+Save(Overwrite=True)
+mesh1.Exit()
+setup1 = system2.GetContainer(ComponentName="Setup")
+setup1.Edit()
+Save(Overwrite=True)
+setup1.Exit()
+setup1.Edit()
+setup1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.01, -0.005
+    Scale = 74.227
+    Pan = 0, 0
+    Rotation Quaternion = 0.279848, -0.364705, -0.115917, 0.880476
+    
+  END
+
+END
+
+VIEW:View 1
+  Light Angle = 50, 110
+END
+
+> update
+FLOW: Flow Analysis 1
+&replace   DOMAIN: Default Domain
+    Coord Frame = Coord 0
+    Domain Type = Fluid
+    Location = B42
+    BOUNDARY: Default Domain Default
+      Boundary Type = WALL
+      Create Other Side = Off
+      Interface Boundary = Off
+      Location = F30.42,F31.42,F32.42,F33.42,F34.42,F35.42,F36.42,F37.42
+      BOUNDARY CONDITIONS: 
+        MASS AND MOMENTUM: 
+          Option = No Slip Wall
+        END # MASS AND MOMENTUM:
+        WALL ROUGHNESS: 
+          Option = Smooth Wall
+        END # WALL ROUGHNESS:
+      END # BOUNDARY CONDITIONS:
+    END # BOUNDARY:Default Domain Default
+    DOMAIN MODELS: 
+      BUOYANCY MODEL: 
+        Option = Non Buoyant
+      END # BUOYANCY MODEL:
+      DOMAIN MOTION: 
+        Option = Stationary
+      END # DOMAIN MOTION:
+      MESH DEFORMATION: 
+        Option = None
+      END # MESH DEFORMATION:
+      REFERENCE PRESSURE: 
+        Reference Pressure = 1 [atm]
+      END # REFERENCE PRESSURE:
+    END # DOMAIN MODELS:
+    FLUID DEFINITION: Fluid 1
+      Material = Air at 25 C
+      Option = Material Library
+      MORPHOLOGY: 
+        Option = Continuous Fluid
+      END # MORPHOLOGY:
+    END # FLUID DEFINITION:Fluid 1
+    FLUID MODELS: 
+      COMBUSTION MODEL: 
+        Option = None
+      END # COMBUSTION MODEL:
+      HEAT TRANSFER MODEL: 
+        Fluid Temperature = 25 [C]
+        Option = Isothermal
+      END # HEAT TRANSFER MODEL:
+      THERMAL RADIATION MODEL: 
+        Option = None
+      END # THERMAL RADIATION MODEL:
+      TURBULENCE MODEL: 
+        Option = SST
+      END # TURBULENCE MODEL:
+      TURBULENT WALL FUNCTIONS: 
+        Option = Automatic
+      END # TURBULENT WALL FUNCTIONS:
+    END # FLUID MODELS:
+  END # DOMAIN:Default Domain
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.01, -0.005
+    Scale = 74.227
+    Pan = 0, 0
+    Rotation Quaternion = 0.656429, -0.393356, -0.200688, 0.611635
+    
+  END
+
+END
+
+> update
+FLOW: Flow Analysis 1
+&replace   DOMAIN INTERFACE: Domain Interface 1
+    Boundary List1 = 
+    Boundary List2 = 
+    Filter Domain List1 = -- All Domains --
+    Filter Domain List2 = -- All Domains --
+    Interface Region List1 = F30.42
+    Interface Region List2 = F30.42
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS: 
+      Option = General Connection
+      FRAME CHANGE: 
+        Option = None
+      END # FRAME CHANGE:
+      MASS AND MOMENTUM: 
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL: 
+          Option = None
+        END # MOMENTUM INTERFACE MODEL:
+      END # MASS AND MOMENTUM:
+      PITCH CHANGE: 
+        Option = None
+      END # PITCH CHANGE:
+    END # INTERFACE MODELS:
+    MESH CONNECTION: 
+      Option = Automatic
+    END # MESH CONNECTION:
+  END # DOMAIN INTERFACE:Domain Interface 1
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.00323283, 0.0199925, -0.00411988
+    Scale = 74.227
+    Pan = 0, 0
+    Rotation Quaternion = 0.656429, -0.393356, -0.200688, 0.611635
+    
+  END
+
+END
+
+> update
+FLOW: Flow Analysis 1
+&replace   DOMAIN INTERFACE: Domain Interface 2
+    Boundary List1 = 
+    Boundary List2 = 
+    Filter Domain List1 = -- All Domains --
+    Filter Domain List2 = -- All Domains --
+    Interface Region List1 = F30.42
+    Interface Region List2 = F30.42
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS: 
+      Option = General Connection
+      FRAME CHANGE: 
+        Option = None
+      END # FRAME CHANGE:
+      MASS AND MOMENTUM: 
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL: 
+          Option = None
+        END # MOMENTUM INTERFACE MODEL:
+      END # MASS AND MOMENTUM:
+      PITCH CHANGE: 
+        Option = None
+      END # PITCH CHANGE:
+    END # INTERFACE MODELS:
+    MESH CONNECTION: 
+      Option = Automatic
+    END # MESH CONNECTION:
+  END # DOMAIN INTERFACE:Domain Interface 2
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.00355164, 0.0199913, -0.00274649
+    Scale = 74.227
+    Pan = 0, 0
+    Rotation Quaternion = 0.656429, -0.393356, -0.200688, 0.611635
+    
+  END
+
+END
+
+> update
+FLOW: Flow Analysis 1
+&replace   DOMAIN INTERFACE: Domain Interface 2
+    Boundary List1 = 
+    Boundary List2 = 
+    Filter Domain List1 = -- All Domains --
+    Filter Domain List2 = -- All Domains --
+    Interface Region List1 = F30.42
+    Interface Region List2 = F30.42
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS: 
+      Option = General Connection
+      FRAME CHANGE: 
+        Option = None
+      END # FRAME CHANGE:
+      MASS AND MOMENTUM: 
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL: 
+          Option = None
+        END # MOMENTUM INTERFACE MODEL:
+      END # MASS AND MOMENTUM:
+      PITCH CHANGE: 
+        Option = None
+      END # PITCH CHANGE:
+    END # INTERFACE MODELS:
+    MESH CONNECTION: 
+      Option = Automatic
+    END # MESH CONNECTION:
+  END # DOMAIN INTERFACE:Domain Interface 2
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command=">delete /FLOW:Flow Analysis 1/DOMAIN INTERFACE:Domain Interface 2")
+setup1.SendCommand(Command="""PRIMITIVE2D: F30.42
+  Show Label = On
+  Option = Render As
+  Pickable = 1
+  Visibility = On
+  Render Edge Angle = 0 [degree]
+  DEFINED RENDERING:
+    Draw Faces = On
+    Face Colour = 0.6, 0.6, 0.6
+    Transparency = 0.5
+    Surface Drawing = Smooth Shading
+    Lighting = Off
+    Specular Lighting = On
+    Culling Mode = No Culling
+    Draw Lines = On
+    Line Colour = 0, 0, 0
+    Line Width = 1
+  END
+END
+
+>forceupdate /PRIMITIVE2D:F30.42""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   DOMAIN INTERFACE: Domain Interface 2
+    Boundary List1 = 
+    Boundary List2 = 
+    Filter Domain List1 = -- All Domains --
+    Filter Domain List2 = -- All Domains --
+    Interface Region List1 = F37.42
+    Interface Region List2 = F35.42
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS: 
+      Option = General Connection
+      FRAME CHANGE: 
+        Option = None
+      END # FRAME CHANGE:
+      MASS AND MOMENTUM: 
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL: 
+          Option = None
+        END # MOMENTUM INTERFACE MODEL:
+      END # MASS AND MOMENTUM:
+      PITCH CHANGE: 
+        Option = None
+      END # PITCH CHANGE:
+    END # INTERFACE MODELS:
+    MESH CONNECTION: 
+      Option = Automatic
+    END # MESH CONNECTION:
+  END # DOMAIN INTERFACE:Domain Interface 2
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   DOMAIN INTERFACE: Domain Interface 2
+    Boundary List1 = 
+    Boundary List2 = 
+    Filter Domain List1 = -- All Domains --
+    Filter Domain List2 = -- All Domains --
+    Interface Region List1 = F37.42
+    Interface Region List2 = F35.42
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS: 
+      Option = General Connection
+      FRAME CHANGE: 
+        Option = None
+      END # FRAME CHANGE:
+      MASS AND MOMENTUM: 
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL: 
+          Option = None
+        END # MOMENTUM INTERFACE MODEL:
+      END # MASS AND MOMENTUM:
+      PITCH CHANGE: 
+        Option = None
+      END # PITCH CHANGE:
+    END # INTERFACE MODELS:
+    MESH CONNECTION: 
+      Option = Automatic
+    END # MESH CONNECTION:
+  END # DOMAIN INTERFACE:Domain Interface 2
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   DOMAIN INTERFACE: Domain Interface 3
+    Boundary List1 = 
+    Boundary List2 = 
+    Filter Domain List1 = -- All Domains --
+    Filter Domain List2 = -- All Domains --
+    Interface Region List1 = F35.42
+    Interface Region List2 = F37.42
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS: 
+      Option = General Connection
+      FRAME CHANGE: 
+        Option = None
+      END # FRAME CHANGE:
+      MASS AND MOMENTUM: 
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL: 
+          Option = None
+        END # MOMENTUM INTERFACE MODEL:
+      END # MASS AND MOMENTUM:
+      PITCH CHANGE: 
+        Option = None
+      END # PITCH CHANGE:
+    END # INTERFACE MODELS:
+    MESH CONNECTION: 
+      Option = Automatic
+    END # MESH CONNECTION:
+  END # DOMAIN INTERFACE:Domain Interface 3
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 100
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 100
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 100
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLUTION UNITS: 
+    Angle Units = [rad]
+    Length Units = [m]
+    Mass Units = [kg]
+    Solid Angle Units = [sr]
+    Temperature Units = [K]
+    Time Units = [s]
+  END # SOLUTION UNITS:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLUTION UNITS: 
+    Angle Units = [rad]
+    Length Units = [m]
+    Mass Units = [kg]
+    Solid Angle Units = [sr]
+    Temperature Units = [K]
+    Time Units = [s]
+  END # SOLUTION UNITS:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 100
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 100
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+system2.Delete()
+template2 = GetTemplate(TemplateName="Fluid Flow with Fluent Meshing")
+system3 = template2.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+geometry2 = system3.GetContainer(ComponentName="Geometry")
+geometry2.Edit(IsDiscoveryGeometry=True)
+geometry2.Exit()
+geometry2.SetFile(FilePath="C:/Users/aadit/OneDrive/Desktop/Beam.STEP")
+setup2 = system3.GetContainer(ComponentName="Setup")
+fluentLauncherSettings1 = setup2.GetFluentLauncherSettings()
+fluentLauncherSettings1.SetEntityProperties(Properties=Set(EnvPath={}, RunParallel=True))
+tGridData1 = GetDataEntity("/Mesh/TGridData:TGridData")
+tGridData1.SetEntityProperties(Properties=Set(RunParallel=True, NumberOfProcs=1))
+mesh2 = system3.GetContainer(ComponentName="Mesh")
+Fluent.Edit(Container=mesh2)
+setup2.SendCommand(Command='(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 0)(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 1)')
+meshComponent2 = system3.GetComponent(Name="Mesh")
+meshComponent2.Refresh()
+setup2.SendCommand(Command='/file/set-tui-version "24.2"(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 0)')
+setup2.SendCommand(Command='(cx-gui-do cx-activate-item "Color Theme Change*Table1*PushButton5(adl_dark)")')
+setup2.SendCommand(Command='(cx-gui-do cx-activate-item "Color Theme Change*PanelButtons*PushButton1(OK)")')
+setup2.SendCommand(Command='(%py-exec "preferences.General.StartupMessages.ColorThemeChangeMessage.set_state(False)")')
+setup2.SendCommand(Command="(%py-exec \"preferences.Appearance.ColorTheme.set_state(r'Dark')\")")
+setup2.SendCommand(Command='(cx-gui-do cx-activate-item "Key Behavioral Changes*PanelButtons*PushButton1(OK)")')
+setup2.SendCommand(Command='(%py-exec "preferences.General.StartupMessages.KeyBehavioralChangesMessage.set_state(True)")')
+setup2.SendCommand(Command="(%py-exec \"meshing.GlobalSettings.LengthUnit.set_state(r'm')\")")
+setup2.SendCommand(Command="(%py-exec \"meshing.GlobalSettings.AreaUnit.set_state(r'm^2')\")")
+setup2.SendCommand(Command="(%py-exec \"meshing.GlobalSettings.VolumeUnit.set_state(r'm^3')\")")
+setup2.SendCommand(Command="(%py-exec \"workflow.TaskObject['Import Geometry'].Arguments.set_state({r'FileName': r'C:\\Users\\aadit\\OneDrive\\Desktop\\Beam.STEP',r'ImportCadPreferences': {r'MaxFacetLength': 0,},r'LengthUnit': r'm',})\")")
+setup2.SendCommand(Command='(cx-gui-do cx-activate-item "Error*OK")(wb-check-upstream-change)(cx-gui-do cx-activate-item "Question*OK")(cx-gui-do cx-activate-item "Information*OK")')
+setup2.SendCommand(Command='(cx-gui-do cx-activate-item "Error*OK")(wb-check-upstream-change)(cx-gui-do cx-activate-item "Question*Cancel")')
+setup2.SendCommand(Command="(%py-exec \"workflow.TaskObject['Import Geometry'].InsertNextTask(CommandName=r'ImportBodyOfInfluenceGeometry')\")")
+setup2.SendCommand(Command="(%py-exec \"workflow.TaskObject['Import Body of Influence Geometry'].Arguments.set_state({r'CadImportOptions': {r'CreateCADAssemblies': False,r'ExtractFeatures': True,r'FeatureAngle': 40,r'ImportCurvatureDataFromCAD': True,r'ImportNamedSelections': True,r'ImportPartNames': False,r'OneObjectPer': r'Program-controlled',r'OneZonePer': r'body',r'OpenAllCadInSubdirectories': False,r'SavePMDBIntermediateFile': False,r'UsePartOrBodyAsSuffix': False,},r'GeometryFileName': None,r'ImportedObjects': None,r'LengthUnit': r'mm',r'MeshFileName': None,r'Type': r'CAD',})\")")
+setup2.SendCommand(Command="(%py-exec \"workflow.TaskObject['Import Geometry'].Revert()\")")
+setup2.SendCommand(Command='(cx-gui-do cx-activate-item "Error*OK")')
+setup2.SendCommand(Command='(cx-gui-do cx-activate-item "MenuBar*FileMenu*Close Fluent")')
+system3.Delete()
+Save(Overwrite=True)

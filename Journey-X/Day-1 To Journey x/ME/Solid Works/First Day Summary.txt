@@ -1,0 +1,33 @@
+08/12/2024
+
+So I learnt Modelling with CAD
+Learnt the following tools of the same
+(2D only)
+1)Line
+2)Smart Dimensions
+3)Reference Point Lines and its usage (Dotted Lines)
+4)Collinearity
+5)Tangent and Relations
+6)Importance of Frame of Reference CP (Center Point) for a well defined 3D object
+7)Trim Tools
+8)Mirror Tools (partially)
+
+Experimented With The following
+1)3D Extrusion
+->What I did was to draw a well defined circle and extrude through the cube
+what I did was I connected diagonal starting from the corner at the origin
+I took its midpoint and then drawn a circle from that reference which actually made it a fully defined Geometry
+(without tutorial)
+
+2)ANSYS Mechanical
+
+1)Import Geometry
+2)Meshing and Refinement
+3)Material Selection init
+4)Boundary Conditions (eg Types of force plane,vectors or coordinates etc)
+5)What you want from the data
+(with tutorial)
+etc etc
+Tried hands on ANSYS CFX AND FLUENT WITH FLUENT MESHING WITHOUT "TUTORIAL"
+but didn't get it and there were errors to
+so time to wind the day up
